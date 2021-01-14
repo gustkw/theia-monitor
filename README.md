@@ -48,6 +48,11 @@ php theia-monitor.php --path /my/path --exclude "(.+\.log)|(access|error)_log|(.
 php theia-monitor.php --path /my/path --email recipient@example.com --subject "Non-default subject" --from optional-from@example.com --cc "optional-bcc@example.com,email2@example.com"
 ```
 
+- Monitor files under first level only
+```shell
+php theia-monitor.php   --path /my/path --alone
+```
+
 Support
 -------
 If you find any bugs, open an issue on [GitHub](https://github.com/firewizard/theia-monitor/issues).
