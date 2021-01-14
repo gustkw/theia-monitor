@@ -79,10 +79,25 @@ class Theia_Monitor
 
     }
 
+    protected function walk_alone(){
+					$objects = scandir( $this->path);
+					$array=array();
+					foreach($objects as $file){
+						$array[$this->path . DIRECTORY_SEPARATOR .$file] = $file;
+					}
+					return $array;
+		}
+
     protected function walk()
     {
         $path = $this->path;
-        $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
+        if ($this->getArg('alone')){
+          $objects=$this->walk_alone();
+        }else{
+          $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
+        }
+
+
         $found = array();
 
         if (!isset($this->db->$path)) {
@@ -275,6 +290,7 @@ Options:
     --from        Email sender (requires <email>)
     --subject     Email  subject (requires <email>)
     --cc          Bcc the report to these addresses (requires <email>)
+    --alone       only watch files under first level
 
 HELP;
 
