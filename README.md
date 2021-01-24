@@ -9,7 +9,7 @@ Installation
 ------------
 Just clone the repository and run the script
 ```shell
-php theia-monitor.php --path /var/www/
+php index.php --config
 ```
 
 Requirements
